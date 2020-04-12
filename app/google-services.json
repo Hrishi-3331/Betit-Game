@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "147181228397",
-    "firebase_url": "https://template-ef606.firebaseio.com",
-    "project_id": "template-ef606",
-    "storage_bucket": "template-ef606.appspot.com"
+    "project_number": "178012427548",
+    "firebase_url": "https://letsbetit-23981.firebaseio.com",
+    "project_id": "letsbetit-23981",
+    "storage_bucket": "letsbetit-23981.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:147181228397:android:38b516edd6726c37eb0a64",
+        "mobilesdk_app_id": "1:178012427548:android:00c009b969fe999364d6d9",
         "android_client_info": {
-          "package_name": "com.hrishi3331studio.template_informal"
+          "package_name": "com.hrishi3331studio.betitgame"
         }
       },
       "oauth_client": [
         {
-          "client_id": "147181228397-usp28pielrfks0p39r3a700um3q4v8l5.apps.googleusercontent.com",
+          "client_id": "178012427548-lbgqdsucucuq8dc0pn46m6357vptcm6p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hrishi3331studio.betitgame",
+            "certificate_hash": "20c2b8b746e32d5de32080f9c55f6d1adc3f7fff"
+          }
+        },
+        {
+          "client_id": "178012427548-jfmovuvu03m2je9p4ffo5vvt02cp6a9s.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDtPJbGB-NexZgnCCQzEetTqUvlOQozDh0"
+          "current_key": "AIzaSyCwXCcvqWWcTHQQuLJCOSMJSnytGHtFysY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "147181228397-usp28pielrfks0p39r3a700um3q4v8l5.apps.googleusercontent.com",
+              "client_id": "178012427548-jfmovuvu03m2je9p4ffo5vvt02cp6a9s.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
