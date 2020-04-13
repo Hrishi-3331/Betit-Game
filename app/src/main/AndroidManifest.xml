@@ -23,7 +23,8 @@
         <activity android:name=".Support.Support" />
         <activity android:name=".Notifications.Notifications" />
         <activity android:name=".User.Profile" />
-        <activity android:name=".NewGames.ChooseGame"></activity>
+        <activity android:name=".NewGames.ChooseGame" />
+        <activity android:name=".NewGames.GameTable.GameTable"></activity>
     </application>
 
 </manifest>
