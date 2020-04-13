@@ -35,6 +35,7 @@ public class ChooseGame extends AppCompatActivity {
             @Override
             protected void populateViewHolder(GameViewHolder viewHolder, Game model, int position) {
                 viewHolder.setView(model.getImage(), model.getName());
+                viewHolder.setOnclickListner(ChooseGame.this, getRef(position).getKey());
             }
         };
 

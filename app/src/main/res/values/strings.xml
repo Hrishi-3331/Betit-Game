@@ -7,4 +7,6 @@
     <string name="exit">EXIT</string>
     <string name="cancel">CANCEL</string>
     <string name="customercare">Enter your message here. Our executive will respond to you in next 24 hrs.</string>
+    <string name="host_table">Host Table</string>
+    <string name="join_table">Join Table</string>
 </resources>

@@ -24,7 +24,9 @@
         <activity android:name=".Notifications.Notifications" />
         <activity android:name=".User.Profile" />
         <activity android:name=".NewGames.ChooseGame" />
-        <activity android:name=".NewGames.GameTable.GameTable"></activity>
+        <activity android:name=".NewGames.GameTable.GameTable" />
+        <activity android:name=".NewGames.GameTable.CreateTable" />
+        <activity android:name=".NewGames.GameTable.JoinTable"></activity>
     </application>
 
 </manifest>
