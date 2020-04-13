@@ -49,27 +49,250 @@
             <LinearLayout
                 android:descendantFocusability="blocksDescendants"
                 android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@color/colorAccent"
                 />
 
-            <android.support.v4.widget.NestedScrollView
+            <LinearLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/user_board"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                >
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:elevation="10dp"
+                    app:riv_border_width="4dp"
+                    app:riv_corner_radius="60dp"
+                    app:riv_border_color="@color/colorAccent"
+                    android:src="@drawable/mav"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:id="@+id/user_image_dashboard"
+                    android:layout_marginBottom="-60dp"
+                    android:scaleType="fitXY"
+                    />
 
                 <LinearLayout
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="60dp"
+                    android:background="@drawable/dashboard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
 
-                    <!-- Fill your content here -->
+                    <TextView
+                        android:id="@+id/username_dashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="Username here"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/background_light"
+                        android:textSize="18sp"
+                        android:padding="12dp"
+                        android:textStyle="bold" />
 
+                    <LinearLayout
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:layout_width="wrap_content"
+                        android:background="@drawable/banner"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/coins"
+                            android:scaleType="fitCenter"
+                            />
+
+                        <TextView
+                            android:padding="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/user_coins_dashboard"
+                            android:text="500"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:layout_marginLeft="4dp"
+                            android:padding="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/available_coins"
+                            android:text="Available"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/textColor"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:layout_margin="4dp"
+                            android:orientation="vertical"
+                            android:background="@drawable/box_1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/dashboard_games_played"
+                                android:text="10"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:padding="6dp"
+                                android:textAlignment="center"
+                                />
+
+                            <TextView
+                                android:paddingBottom="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Played"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:background="@drawable/box_1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="4dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/dashboard_games_won"
+                                android:text="10"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:padding="6dp"
+                                android:textAlignment="center"
+                                />
+
+                            <TextView
+                                android:paddingBottom="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Won"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:background="@drawable/box_1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="4dp"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/dashboard_games_pending"
+                                android:text="10"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:padding="6dp"
+                                android:textAlignment="center"
+                                />
+
+                            <TextView
+                                android:paddingBottom="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Pending"
+                                android:textColor="@android:color/white"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </android.support.v4.widget.NestedScrollView>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+
+                <Button
+                    android:id="@+id/start_button"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button"
+                    android:layout_width="180dp"
+                    android:layout_height="55dp"
+                    android:text="Play Now"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:onClick="PlayNow"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -3,25 +3,30 @@ package com.hrishi3331studio.betitgame.General;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.hrishi3331studio.betitgame.Dialogs.LoaderDialog;
+import com.hrishi3331studio.betitgame.NewGames.ChooseGame;
 import com.hrishi3331studio.betitgame.Notifications.Notifications;
 import com.hrishi3331studio.betitgame.R;
 import com.hrishi3331studio.betitgame.Support.ContactUs;
@@ -36,9 +41,14 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private NavigationView mNavigation;
     private ActionBarDrawerToggle mToggle;
-    private FirebaseUser mUser;
-    private FirebaseAuth mAuth;
     private LoaderDialog dialog;
+    private TextView username;
+    private TextView usercoins;
+    private TextView played_games;
+    private TextView won_games;
+    private TextView pending_games;
+    private RoundedImageView avtar;
+    private DatabaseReference mRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +66,18 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-        mAuth = FirebaseAuth.getInstance();
-        mUser = mAuth.getCurrentUser();
 
-        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+        username = (TextView)findViewById(R.id.username_dashboard);
+        usercoins = (TextView)findViewById(R.id.user_coins_dashboard);
+        played_games = (TextView)findViewById(R.id.dashboard_games_played);
+        won_games = (TextView)findViewById(R.id.dashboard_games_won);
+        pending_games = (TextView)findViewById(R.id.dashboard_games_pending);
+        avtar = (RoundedImageView)findViewById(R.id.user_image_dashboard);
+
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        mRef = FirebaseDatabase.getInstance().getReference().child("users").child(mUser.getUid());
+
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() == null){
@@ -151,7 +169,8 @@ public class MainActivity extends AppCompatActivity {
             exit_dialog.show();
         }
         else {
-            //dialog.showLoader();
+            dialog.showLoader();
+            updateDashboard();
         }
     }
 
@@ -189,6 +208,98 @@ public class MainActivity extends AppCompatActivity {
         exit_dialog.show();
     }
 
+    public void updateDashboard(){
+        mRef.child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null){
+                    username.setText(dataSnapshot.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mRef.child("coins").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null){
+                    usercoins.setText(dataSnapshot.getValue().toString());
+                    dialog.dismissLoader();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mRef.child("games_played").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null){
+                    played_games.setText(dataSnapshot.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mRef.child("games_won").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null){
+                    won_games.setText(dataSnapshot.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mRef.child("games_pending").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null){
+                    pending_games.setText(dataSnapshot.getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mRef.child("photourl").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null){
+                    try{
+                        Picasso.get().load(dataSnapshot.getValue().toString()).into(avtar);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -209,5 +320,9 @@ public class MainActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.menu_event_details, menu);
         return true;
+    }
+
+    public void PlayNow(View view){
+        startActivity(new Intent(MainActivity.this, ChooseGame.class));
     }
 }

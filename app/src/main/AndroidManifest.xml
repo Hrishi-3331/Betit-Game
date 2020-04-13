@@ -22,7 +22,8 @@
         <activity android:name=".Support.ContactUs" />
         <activity android:name=".Support.Support" />
         <activity android:name=".Notifications.Notifications" />
-        <activity android:name=".User.Profile"></activity>
+        <activity android:name=".User.Profile" />
+        <activity android:name=".NewGames.ChooseGame"></activity>
     </application>
 
 </manifest>
